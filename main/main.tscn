@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d2pbq8lj06grm"]
+
+[ext_resource type="PackedScene" uid="uid://c3tb1j8ert83k" path="res://main/player/player.tscn" id="1_53q0u"]
+
+[sub_resource type="Environment" id="Environment_pjrb6"]
+background_mode = 1
+background_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+fog_density = 0.1
+
+[node name="Main" type="Node3D" unique_id=1980151166]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=869259732]
+transform = Transform3D(1, -2.9802322e-08, -2.9802322e-08, 2.7805946e-08, 0.49999994, 0.86602545, 0, -0.86602545, 0.49999994, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1488708478]
+environment = SubResource("Environment_pjrb6")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=112979603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Player" parent="." unique_id=1024854265 instance=ExtResource("1_53q0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="World" type="CSGCombiner3D" parent="." unique_id=359491336]
+
+[node name="Ground" type="CSGBox3D" parent="World" unique_id=1803611625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -36)
+size = Vector3(11, 1, 81)
