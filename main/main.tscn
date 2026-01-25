@@ -29,4 +29,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
 [node name="Ground" type="CSGBox3D" parent="World" unique_id=1803611625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -36)
-size = Vector3(11, 1, 81)
+size = Vector3(7, 1, 81)
