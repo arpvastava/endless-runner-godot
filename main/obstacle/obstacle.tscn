@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b0p5jpbx1ysmn"]
+
+[ext_resource type="Script" uid="uid://dorgdepf2307a" path="res://main/obstacle/obstacle.gd" id="1_hh76c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p1l3a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hh76c"]
+albedo_color = Color(0.3137255, 0.47058824, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e032x"]
+
+[node name="Obstacle" type="Area3D" unique_id=2121947245]
+script = ExtResource("1_hh76c")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1352879431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_p1l3a")
+surface_material_override/0 = SubResource("StandardMaterial3D_hh76c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=864002394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+shape = SubResource("BoxShape3D_e032x")

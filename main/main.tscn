@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2pbq8lj06grm"]
 
 [ext_resource type="PackedScene" uid="uid://c3tb1j8ert83k" path="res://main/player/player.tscn" id="1_53q0u"]
+[ext_resource type="PackedScene" uid="uid://cf7upj6ynd1fn" path="res://main/obstacle/obstacles_manager.tscn" id="2_xwkvk"]
 
 [sub_resource type="Environment" id="Environment_pjrb6"]
 background_mode = 1
@@ -27,6 +28,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Player" parent="." unique_id=1024854265 instance=ExtResource("1_53q0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="Obstacles Manager" parent="." unique_id=1139720800 node_paths=PackedStringArray("obstacles_container") instance=ExtResource("2_xwkvk")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -64)
+obstacles_container = NodePath("Obstacles")
+
+[node name="Obstacles" type="Node3D" parent="Obstacles Manager" unique_id=1904871728]
 
 [node name="World" type="CSGCombiner3D" parent="." unique_id=359491336]
 
