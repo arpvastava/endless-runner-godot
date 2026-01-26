@@ -10,8 +10,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position.z -= speed * delta
+	
+	if global_position.z > Global.camera.global_position.z:
+		queue_free()
 
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
-		print("Game Over")
+		Global.game_state = Global.GameState.ENDED
