@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://d2pbq8lj06grm"]
 
 [ext_resource type="PackedScene" uid="uid://c3tb1j8ert83k" path="res://main/player/player.tscn" id="1_53q0u"]
+[ext_resource type="Script" uid="uid://baxx3dkosknnr" path="res://main/main.gd" id="1_c651c"]
 [ext_resource type="PackedScene" uid="uid://cf7upj6ynd1fn" path="res://main/obstacle/obstacles_manager.tscn" id="2_xwkvk"]
+[ext_resource type="Texture2D" uid="uid://drfjcli5qcwl0" path="res://assets/textures/kenney_prototype_textures/texture_03.png" id="4_c651c"]
 
 [sub_resource type="Environment" id="Environment_pjrb6"]
 background_mode = 1
@@ -12,7 +14,14 @@ fog_enabled = true
 fog_light_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
 fog_density = 0.1
 
-[node name="Main" type="Node3D" unique_id=1980151166]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c651c"]
+albedo_texture = ExtResource("4_c651c")
+uv1_scale = Vector3(0.56, 0.56, 0.56)
+uv1_triplanar = true
+
+[node name="Main" type="Node3D" unique_id=1980151166 node_paths=PackedStringArray("ground")]
+script = ExtResource("1_c651c")
+ground = NodePath("World/Ground")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=869259732]
 transform = Transform3D(1, -2.9802322e-08, -2.9802322e-08, 2.7805946e-08, 0.49999994, 0.86602545, 0, -0.86602545, 0.49999994, 0, 0, 0)
@@ -40,3 +49,4 @@ obstacles_container = NodePath("Obstacles")
 [node name="Ground" type="CSGBox3D" parent="World" unique_id=1803611625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -36)
 size = Vector3(7, 1, 81)
+material = SubResource("StandardMaterial3D_c651c")
