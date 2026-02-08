@@ -1,6 +1,7 @@
 extends Node
 
 enum GameState {
+	START,
 	PLAYING,
 	ENDED
 }
@@ -9,7 +10,7 @@ var player: Player
 var camera: Camera3D
 
 signal game_state_changed
-var game_state: GameState = GameState.PLAYING:
+var game_state: GameState = GameState.START:
 	get:
 		return game_state
 	set(value):

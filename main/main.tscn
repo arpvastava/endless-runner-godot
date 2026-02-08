@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://baxx3dkosknnr" path="res://main/main.gd" id="1_c651c"]
 [ext_resource type="PackedScene" uid="uid://cf7upj6ynd1fn" path="res://main/obstacle/obstacles_manager.tscn" id="2_xwkvk"]
 [ext_resource type="Texture2D" uid="uid://drfjcli5qcwl0" path="res://assets/textures/kenney_prototype_textures/texture_03.png" id="4_c651c"]
+[ext_resource type="Theme" uid="uid://2aw56nbnnewj" path="res://main/main_theme.tres" id="5_3wy1v"]
 
 [sub_resource type="Environment" id="Environment_pjrb6"]
 background_mode = 1
@@ -19,8 +20,10 @@ albedo_texture = ExtResource("4_c651c")
 uv1_scale = Vector3(0.56, 0.56, 0.56)
 uv1_triplanar = true
 
-[node name="Main" type="Node3D" unique_id=1980151166 node_paths=PackedStringArray("ground")]
+[node name="Main" type="Node3D" unique_id=1980151166 node_paths=PackedStringArray("start_btn", "play_again_btn", "ground")]
 script = ExtResource("1_c651c")
+start_btn = NodePath("UI Layer/Root/Start")
+play_again_btn = NodePath("UI Layer/Root/Play Again")
 ground = NodePath("World/Ground")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=869259732]
@@ -50,3 +53,41 @@ obstacles_container = NodePath("Obstacles")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -36)
 size = Vector3(7, 1, 81)
 material = SubResource("StandardMaterial3D_c651c")
+
+[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1357032501]
+
+[node name="Root" type="Control" parent="UI Layer" unique_id=2136119312]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_3wy1v")
+
+[node name="Start" type="Button" parent="UI Layer/Root" unique_id=1291006875]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.5
+offset_top = 168.0
+offset_right = 300.5
+offset_bottom = 363.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 128
+text = "Start"
+
+[node name="Play Again" type="Button" parent="UI Layer/Root" unique_id=982068266]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.5
+offset_top = 168.0
+offset_right = 300.5
+offset_bottom = 363.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 128
+text = "Play Again"

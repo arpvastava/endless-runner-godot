@@ -6,6 +6,8 @@ const offset: float = 2
 var targetX: float = 0
 var dir: int = 0
 
+var og_collision_layer: int
+var og_collision_mask: int
 
 func _enter_tree() -> void:
 	Global.player = self
@@ -13,6 +15,9 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	Global.game_state_changed.connect(_on_game_state_changed)
+	
+	og_collision_layer = collision_layer
+	og_collision_mask = collision_mask
 
 
 func _process(_delta: float) -> void:
@@ -39,8 +44,20 @@ func _process(_delta: float) -> void:
 	move_and_slide()
 
 
-func _on_game_state_changed(new_state: Global.GameState) -> void:
-	if new_state == Global.GameState.ENDED:
+func _on_game_state_changed(game_state: Global.GameState) -> void:
+	if game_state == Global.GameState.PLAYING and not is_processing():
+		# Reset position
+		position.x = 0
+		targetX = 0
+		
+		# Activate player
+		set_process(true)
+		collision_layer = og_collision_layer
+		collision_mask = og_collision_mask
+		visible = true
+	
+	if game_state == Global.GameState.ENDED:
+		# Deactivate player
 		set_process(false)
 		collision_layer = 0
 		collision_mask = 0

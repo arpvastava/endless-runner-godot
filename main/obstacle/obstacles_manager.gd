@@ -11,6 +11,7 @@ var offset: float = 2
 
 
 func _ready() -> void:
+	Global.game_state_changed.connect(_on_game_state_changed)
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 
 
@@ -37,3 +38,13 @@ func _on_spawn_timer_timeout() -> void:
 	# Create obstacles
 	_create_obstacle(pos_1)
 	_create_obstacle(pos_2)
+
+
+func _on_game_state_changed(game_state: Global.GameState) -> void:
+	if game_state == Global.GameState.PLAYING:
+		spawn_timer.start()
+	else:
+		spawn_timer.stop()
+		
+		for obs in obstacles_container.get_children():
+			obs.queue_free()

@@ -9,4 +9,3 @@ obstacle_scene = ExtResource("2_2hl7u")
 spawn_timer = NodePath("Spawn Timer")
 
 [node name="Spawn Timer" type="Timer" parent="." unique_id=863421322]
-autostart = true
